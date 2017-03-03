@@ -1,0 +1,60 @@
+h3
+{
+    text-transform: capitalize;
+}
+form input[type="text"]
+{
+    width: 200px;
+    border-radius: 5px;
+    height: 30px;
+    border-style: groove;
+}
+form input[type="email"]
+{
+    width: 250px;
+    border-radius: 5px;
+    height: 30px;
+    border-style: groove;
+}
+.labels
+{
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+form input[type="submit"]
+{
+    margin-right: 0px;
+    margin-top: 20px;
+    background: #34B6CE;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    border: 1px;
+    width: 80px;
+    height: 25px;
+    float: right;
+    margin-right: 20px;
+}
+form input[type="radio"]
+{
+    width: 30px;
+    height: 15px;
+}
+form input[type="url"]
+{
+    width: 300px;
+    border-radius: 5px;
+    height: 30px;
+    border-style: groove;    
+}
+select
+{
+    text-transform: uppercase;
+    border-radius: 5px;
+    height: 20px;
+}
+form input[type="tel"]
+{
+    border-radius: 5px;
+    border-style: groove;
+}

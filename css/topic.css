@@ -1,0 +1,31 @@
+#msg{
+    position: relative;
+}
+#msg p{
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    display: inline-block;
+}
+#msg .right{
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    display:inline-block;
+    float: right;
+}
+.clear{
+    clear: both;
+}
+.sc::-webkit-scrollbar {
+    width: 12px;
+}
+.sc::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+.sc::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

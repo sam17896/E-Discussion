@@ -1,0 +1,1309 @@
+{
+"Competitions": [
+    {
+      "name": "Speed Programming",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "Web Development",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "UI/UX",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "Database",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "App Development",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "Database",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "Algorithm",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "Demo your project",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    },
+    {
+      "name": "Debugging",
+      "teams": [
+          {
+              "name" : "team1",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team2",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team3",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team4",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team5",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team6",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team7",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team8",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team9",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          },
+          {
+              "name" : "team10",
+              "members" : [
+                  {
+                      "name" : "member1"
+                  },
+                  {
+                      "name" : "member2"
+                  },
+                  {
+                      "name" : "member3"
+                  }
+              ]
+          }
+          ]
+    }
+  ]
+}

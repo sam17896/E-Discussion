@@ -1,0 +1,158 @@
+.header{
+    background :url(../imgs/hdbg.png) no-repeat;
+    height:760px;
+    font-family: 'Roboto', sans-serif;
+    background-position: center;
+    
+}
+.header #box {
+    
+    
+}
+
+.header #box h2{
+    
+        font-family: 'Roboto', sans-serif;
+        font-size:60px;
+        font-weight:300;
+        color:#fff; 
+        margin-top:25%;
+       
+}
+#box h1{
+     font-family: 'Roboto', sans-serif;
+        font-size:133px;
+        font-weight:700;
+        color:#fff; 
+     text-transform:uppercase;
+     text-align:center;
+}
+
+
+.mybutton{
+  width: 380px;
+  margin: 0 auto;
+	margin-top:20px;
+}
+
+.bb, .bb2 {
+        color:#fff;
+    font-family:'Roboto';
+  font-size:27px;
+  font-weight:300;
+background-color:transparent;
+	text-transform:uppercase;
+margin-right:30px;
+	
+     border:4px solid #fff;
+    -webkit-border-radius: 50px; 
+    -moz-border-radius: 50px; 
+     border-radius: 50px;     
+
+     float:left;
+     display:block;
+     padding-left:20px;
+	padding-right:20px;
+    padding-top:0px;
+	padding-bottom:0px;
+
+}
+.bb:hover ,.bb2:hover , .bb2:focus ,.bb:focus{
+border:4px solid #fff;
+    background-color:#00e695;
+    
+     -webkit-transition: background-color 500ms ease-out 0.1s;
+    -moz-transition: background-color 500ms ease-out 0.1s;
+    -o-transition: background-color 500ms ease-out 0.1s;
+    transition: background-color 500ms ease-out 0.1s;
+}
+
+
+
+
+
+
+.header #box h1 span{
+    
+        font-family: 'Roboto', sans-serif;
+        font-size:70px;
+        font-weight:900;
+        color:#fff; 
+    
+}
+
+.Title_text h2
+{
+    font-family:'Roboto';
+    font-size:30px;
+    color:#282828;    
+    text-align: Justify;
+    
+    font-weight:900;
+    text-transform: uppercase;
+}
+
+.MileStone{
+    
+     height:390px;
+     
+     background:url(../imgs/mile.png);
+     margin-top:20px 
+}
+
+.MileStonehead{
+    
+     font-family:'Roboto';
+     font-weight:700;
+    font-size:30px;
+    font-weight:900;
+    color:#262b2c;    
+    text-align: center;
+    text-transform:uppercase;
+  position:relative
+}
+
+
+
+.MileStone .container .circle{
+     
+     height:222px;
+     width:225px;
+     border:6px solid #fff;
+     margin:0 auto;
+     -webkit-border-radius: 500px; 
+    -moz-border-radius: 500px; 
+     border-radius: 500px;   
+  margin-top:100px
+}
+
+.MileStone .container .circle .Mval{
+     font-family: 'Roboto', sans-serif;
+     font-weight:100;
+      color:#fff;
+    font-size:75px;
+      margin:0 auto;
+      text-align:center;
+        position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.MileStone .container .circle .Mitem{
+     font-family: 'Roboto', sans-serif;
+     font-weight:300;
+      color:#fff;
+    font-size:20px;
+      margin:0 auto;
+      text-align:center;
+
+    position: relative;
+  top: 20%;
+  transform: translateY(-10%);
+}
+
+.footer{
+    height: 100px;
+    background:#161717;
+    margin-top:100px
+}

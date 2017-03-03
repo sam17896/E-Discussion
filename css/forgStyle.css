@@ -1,0 +1,160 @@
+header h4
+{
+    font-size: 14px;
+    color: #161717;
+    font-family: 'Roboto', sans-serif;
+}
+header h4 select
+{
+    background: whitesmoke;
+    border: none;
+    width: 45px;
+    height:20px;
+    margin-left: 3px;
+}
+header
+{
+    background: #05c582;
+}
+header nav ul
+{
+    float: right;
+    margin-top: 12px;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+header nav ul a
+{
+    color: #161717;
+}
+header nav li
+{
+    display: inline;
+    text-decoration: none;
+    margin-right: 50px;
+    padding-left: 5px;
+}
+header nav ul a .fa
+{
+    font-size: 16px;
+}
+.top h2
+{
+    text-align: center;
+    font-weight: bolder;
+    color: #00796B;
+    font-family: 'Roboto', sans-serif;
+}
+.top hr
+{
+    border: 1px solid #00796B;;
+}
+.top p
+{
+    text-align: center;
+    color: #00796B;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+.top .forg
+{
+    width: 315px;
+    margin: auto;
+    margin-top: 50px;
+}
+.top .resetss
+{
+    width: 380px;
+    margin: auto;
+    margin-top: 50px;
+}
+.top .verifyy
+{
+    width: 250px;
+    margin: auto;
+    margin-top: 50px;
+}
+.top form input
+{
+    border-radius: 5px;
+    height: 30px;
+    border-color: #161717;
+    border-style: groove;
+    border-width: 1px;
+    float: right;
+    font-family: 'Roboto', sans-serif;
+    text-indent: 10px;
+}
+.top form input[type="email"]
+{
+    width: 250px;
+    text-indent: 10px;
+}
+.top form input[type="submit"]
+{
+    margin: auto;
+    border-radius: 5px;
+    background-color: #00796B;
+    color: white;
+    text-decoration: none;
+    border: 1px;
+    width: 125px;
+    height: 30px;
+    margin-top: 5px;
+}
+.top form input[type="password"]
+{
+    width: 200px;
+    text-indent: 10px;
+}
+.top .labels
+{
+    margin-top: 5px;
+    text-transform: capitalize;
+    color: #161717;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #00796B;
+}
+main{
+    margin-top: 5%;   
+}
+footer
+{
+    height: 57px;
+    background:#161717;
+    
+}
+footer .cr
+{
+    color: #B7B7B7;
+    font-family: 'Roboto', sans-serif;
+}
+footer .cr img
+{
+    height: 20px;
+}
+footer .icons img
+{
+    float: right;
+    margin-right: 10px;
+    margin-top: -5px;
+    border: 3px solid whitesmoke;
+    border-radius: 50px;
+    height: 30px;
+    padding: 3px;
+}
+footer .icons .fb
+{
+    padding-left: 9px;
+    padding-right: 9px;
+}
+footer .icons img:hover
+{
+    border-color: #00796B;
+    height: 35px;
+}
+footer #foot
+{
+    padding-top: 20px;
+}
