@@ -6,12 +6,12 @@ $db = new Database();
 $conn = $db->dbConnection();
 $feed = new newsfeed();
 $user = new USER();
-//if(!isset($_SESSION['user'])){
-//    header("location: index.php");
-//}
-//else{
-    $username="ahsan12";
+if(!isset($_SESSION['user'])){
+    header("location: index.php");
+}
+else{
+    $username=$_SESSION['user'];
     $user->makeuser($conn,$username);
     $feed->getTopics($conn,$user->userid);
-//}
+}
 ?>

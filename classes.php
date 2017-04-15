@@ -290,7 +290,7 @@ public $status;
      
  }
 public function addmessage($conn,$userid,$message,$msgid){
-    $stmt = oci_parse($conn,"insert into message values($msgid,$userid,'$message',sysdate)");
+    $stmt = oci_parse($conn,"insert into message values($msgid,$userid,'$message',sysdate,1)");
     oci_execute($stmt);
 }
  public function runQuery($sql)
@@ -482,6 +482,7 @@ public function __construct()
         oci_execute($stmt);
         $result = array();
         $msg=0;
+        echo $id;
      while(($row=oci_fetch_array($stmt))!=false){
          $id = $row['ID'];
          $name = $row['NAME'];
@@ -495,7 +496,7 @@ public function __construct()
          oci_execute($query);
          $r = oci_fetch_array($query);
          $msg=$r['COUNT(*)'];
- array_push($result,array('id'=>$id,'name'=>$name,'admin'=>$admin,'description'=>$description,'username'=>$username,'msg'=>$msg));
+        array_push($result,array('id'=>$id,'name'=>$name,'admin'=>$admin,'description'=>$description,'username'=>$username,'msg'=>$msg));
     }
         echo json_encode(array('topic'=>$result));
     }
@@ -560,7 +561,7 @@ class thread{
         echo json_encode(array('msg'=>$result));
     }
      public function addmessage($conn,$userid,$message,$mesgid){
-     $stmt = oci_parse($conn,"insert into message values($mesgid,$userid,'$message',sysdate)");
+     $stmt = oci_parse($conn,"insert into message values($mesgid,$userid,'$message',sysdate,1)");
      oci_execute($stmt);
 }
      public function addmess($conn,$id,$mesgid){

@@ -19,6 +19,5 @@ if(empty($_GET['id'])){
 else{
     $id = $_GET['id'];
     $profile->getFriends($conn,$id);
-    //header("location: profile.php?id=$id");
 }
 ?>
