@@ -24,21 +24,21 @@ if(!isset($_SESSION['user'])){
 else{
     $username=$_SESSION['user'];
     $user->makeuser($conn,$username);
-    $stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid and thread_id is not null");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid and thread_id is not null");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $not=$row['COUNT(*)'];
-     $stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid and topic_id is not null");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+     $stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid and topic_id is not null");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $gr = $row['COUNT(*)'];
-     $stmt = oci_parse($conn,"select count(*) from notification where usersid = $user->userid and status=0");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+     $stmt = pg_query($conn,"select count(*) from notification where usersid = $user->userid and status=0");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $z = $row['COUNT(*)'];
-     $stmt = oci_parse($conn,"select detail from notification where usersid=$user->userid order by time desc");
-     oci_execute($stmt);
-     while($row=oci_fetch_array($stmt)){
+     $stmt = pg_query($conn,"select detail from notification where usersid=$user->userid order by time desc");
+     pg_fetch_array($stmt);
+     while($row=pg_fetch_array($stmt)){
          $noti .= "<p>".$row['DETAIL']."</p><hr>";
      }
     
@@ -65,8 +65,8 @@ if(isset($_POST['submit'] ) )
         } 
         $databasename=$now.'-'.$_FILES['userfile']['name'];
         @move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadFilename) ; 
-    $sql = oci_parse($conn , "UPDATE  users SET UserPic='$databasename'  WHERE Username = '$username' ");
-    oci_execute($sql);
+    $sql = pg_query($conn , "UPDATE  users SET UserPic='$databasename'  WHERE Username = '$username' ");
+    pg_fetch_array($sql);
     }
     if( $_FILES['coverfile']['size'] > 0)
     {
@@ -108,8 +108,8 @@ if(isset($_POST['submit'] ) )
         '</html>'; 
         exit; 
     } // end error handler 
-    $sql = oci_parse($conn , "UPDATE  users SET Usercover='$databasename'  WHERE Username = '$username' ");
-    oci_execute($sql);
+    $sql = pg_query($conn , "UPDATE  users SET Usercover='$databasename'  WHERE Username = '$username' ");
+    pg_fetch_array($sql);
     }
 	$details=new UserDetails();
     $gender=$_POST['gender'];
@@ -222,39 +222,39 @@ $work='';
 $skill='';
 $interest='';
 $cover=''; 
-$stmt = oci_parse($conn,"select userpic,usercover from users where usersid=$id");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
+$stmt = pg_query($conn,"select userpic,usercover from users where usersid=$id");
+pg_fetch_array($stmt);
+$row = pg_fetch_array($stmt);
 $Dp=$row['USERPIC'];
 $cover = $row['USERCOVER'];    
-$stmt = oci_parse($conn,"select * from userdetails where usersid=$id");
-oci_execute($stmt);    
-$row = oci_fetch_array($stmt);
+$stmt = pg_query($conn,"select * from userdetails where usersid=$id");
+pg_fetch_array($stmt);    
+$row = pg_fetch_array($stmt);
 $Firstname = $row['FIRST_NAME'];
 $Lastname = $row['LAST_NAME'];
 $gender = $row['GENDER'];
 $country = $row['COUNTRY'];
 $dob = $row['DOB'];
-$stmt = oci_parse($conn,"select p.phonenumber,n.typename,n.typeid,p.usersid from phonenumber p, numbertype n where p.usersid=$id and p.type_id = n.typeid");
-oci_execute($stmt);
-while($row=oci_fetch_array($stmt)){
+$stmt = pg_query($conn,"select p.phonenumber,n.typename,n.typeid,p.usersid from phonenumber p, numbertype n where p.usersid=$id and p.type_id = n.typeid");
+pg_fetch_array($stmt);
+while($row=pg_fetch_array($stmt)){
     $phone.= "<tr><td><h3>".$row['TYPENAME']."</h3></td>  
                         <td><h3>".$row['PHONENUMBER']."</h3></td>
                         
                         <td></td></tr>";  
 }
-$stmt = oci_parse($conn,"select l.name,u.link from links l, userslinks u where u.usersid=$id and l.id = u.links_id");
-oci_execute($stmt);
-while($row=oci_fetch_array($stmt)){            
+$stmt = pg_query($conn,"select l.name,u.link from links l, userslinks u where u.usersid=$id and l.id = u.links_id");
+pg_fetch_array($stmt);
+while($row=pg_fetch_array($stmt)){            
     $link .= " <tr>  
                 <td><h3>".$row['NAME']."</h3></td>  
                 <td><a href=".$row['LINK']."><h3>".$row['LINK']."</h3></a></td>  
                 <td></td>
                </tr>";
 }
-$stmt = oci_parse($conn,"select * from education where usersid=$id");
-oci_execute($stmt);
-while($row=oci_fetch_array($stmt)){            
+$stmt = pg_query($conn,"select * from education where usersid=$id");
+pg_fetch_array($stmt);
+while($row=pg_fetch_array($stmt)){            
     $education .= " <tr>  
                 <td><h3>".$row['INSTITUTENAME']."</h3></td>  
                 <td><h3>".$row['EFROM']."</h3></td>
@@ -262,9 +262,9 @@ while($row=oci_fetch_array($stmt)){
                 <td></td>
                </tr>";
 }
-$stmt = oci_parse($conn,"select * from work where usersid=$id");
-oci_execute($stmt);
-while($row=oci_fetch_array($stmt)){            
+$stmt = pg_query($conn,"select * from work where usersid=$id");
+pg_fetch_array($stmt);
+while($row=pg_fetch_array($stmt)){            
     $work .= " <tr>  
                 <td><h3>".$row['COMPANYNAME']."</h3></td>  
                 <td><h3>".$row['WFROM']."</h3></td>
@@ -272,18 +272,18 @@ while($row=oci_fetch_array($stmt)){
                 <td></td>
                </tr>";
 }
-$stmt = oci_parse($conn,"select * from usersinterest where usersid=$id");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select * from usersinterest where usersid=$id");
+pg_fetch_array($stmt);
 $interest.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $interest .= " <tr>  
                     <td><h3>".$row['INTREST']."</h3></td> 
                     <td></td>
                 </tr>";
 }
-$stmt = oci_parse($conn,"select * from usersskill where usersid=$id");
-oci_execute($stmt);
-while($row=oci_fetch_array($stmt)){            
+$stmt = pg_query($conn,"select * from usersskill where usersid=$id");
+pg_fetch_array($stmt);
+while($row=pg_fetch_array($stmt)){            
     $skill .= " <tr>  
                     <td><h3>".$row['SKILLNAME']."</h3></td>  
                     <td></td>
@@ -445,9 +445,9 @@ $(document).ready(function()
     <tr>  
 <td> 
     <select  name="PhoneType[]"class="form-control "  >
-     <?php $smtp=oci_parse($conn,"Select typeid , typename from numbertype") ;
-           oci_execute($smtp);  
-            while($row=oci_fetch_array($smtp)  )   {
+     <?php $smtp=pg_query($conn,"Select typeid , typename from numbertype") ;
+           pg_fetch_array($smtp);  
+            while($row=pg_fetch_array($smtp)  )   {
                 echo "<option value=\"".$row['TYPEID']. "\" > " .$row['TYPENAME'] ." </option>"; 
             }
      ?>
@@ -463,9 +463,9 @@ $(document).ready(function()
 <tr>  
 <td> 
     <select  name="linktype[]"class="form-control "  >
-     <?php $smtp=oci_parse($conn,"Select id , name from links") ;
-           oci_execute($smtp);  
-            while($row=oci_fetch_array($smtp)  )   {
+     <?php $smtp=pg_query($conn,"Select id , name from links") ;
+           pg_fetch_array($smtp);  
+            while($row=pg_fetch_array($smtp)  )   {
                 echo "<option value=\"".$row['ID']. "\" > " .$row['NAME'] ." </option>"; 
             }
      ?>
@@ -673,15 +673,15 @@ function readURL(input) {
 
 <script>  
 <?php 
-    $smtp=oci_parse($conn,"Select typeid , typename from numbertype");
-    oci_execute($smtp);  
+    $smtp=pg_query($conn,"Select typeid , typename from numbertype");
+    pg_fetch_array($smtp);  
 echo"$(document).ready(function(){  
       var i=1;  
       $('#add').click(function(){  
            i++;  
            $('#dynamic_field').append('<tr id=\"row'+i+'\"><td>	<select  name=\"PhoneType[]\"class=\"form-control \"  >";
                                        
-    while($row=oci_fetch_array($smtp)  )   {
+    while($row=pg_fetch_array($smtp)  )   {
         echo "<option value=\"".$row['TYPEID'] . " \" > " .$row['TYPENAME'] ." </option>" ; 
     }
 
@@ -693,15 +693,15 @@ echo"$(document).ready(function(){
       });    
  }); 
  ";
-    $smtp=oci_parse($conn,"Select id , name from links");
-    oci_execute($smtp);  
+    $smtp=pg_query($conn,"Select id , name from links");
+    pg_fetch_array($smtp);  
 echo"$(document).ready(function(){  
       var n=701;  
       $('#addlink').click(function(){  
            n++;  
            $('#link').append('<tr id=\"row'+n+'\"><td>	<select  name=\"linktype[]\"class=\"form-control \"  >";
                                        
-    while($row=oci_fetch_array($smtp)  )   {
+    while($row=pg_fetch_array($smtp)  )   {
         echo "<option value=\"".$row['ID'] . " \" > " .$row['NAME'] ." </option>" ; 
     }
 

@@ -17,8 +17,8 @@ if($user->is_logged_in()!="")
     $user->logout($conn); 
     $desc =$username." Logged out";
     $id = $user->userid;
-    $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-    oci_execute($activity); 
+    $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+    pg_fetch_array($activity); 
    $user->redirect('index.php');
 }
 ?>

@@ -94,8 +94,6 @@ PRIMARY KEY(tagname, id),
   FOREIGN KEY(id)
     REFERENCES Topic(id));
 
-
-
 CREATE TABLE Activity (
   id INTEGER   NOT NULL ,
   UsersId INTEGER   NOT NULL ,
@@ -153,7 +151,7 @@ create sequence not_seq start with 500 increment by 1;
 CREATE TABLE Message (
   id INTEGER   NOT NULL ,
   senderid INTEGER   NOT NULL ,
-  messagetext CLOB    ,
+  messagetext TEXT    ,
   time TIMESTAMP      ,
 PRIMARY KEY(id),
   FOREIGN KEY(senderid)

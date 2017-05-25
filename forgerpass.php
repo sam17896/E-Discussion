@@ -16,13 +16,13 @@ if(isset($_POST['btn-submit']))
 {
  $email = $_POST['txtemail'];
  $stmt = $user->runQuery("SELECT username,usersid from (select users.*,Row_number() over (order by usersid) FROM users WHERE emailid='$email' order by usersid desc) where rownum=1");
- oci_execute($stmt);
- if(($row = oci_fetch_array($stmt,OCI_BOTH))!=false){
+ pg_fetch_array($stmt);
+ if(($row = pg_fetch_array($stmt)!=false){
  $id = $row['USERSID'];
  $username = $row['USERNAME'];
  $desc =$username." Requested Password Reset Link";
- $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
- oci_execute($activity); 
+ $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+ pg_fetch_array($activity); 
  $code = md5(uniqid(rand())); 
   $_SESSION['resetcode'] = $code;
   $message= "

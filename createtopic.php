@@ -19,22 +19,22 @@ $not=0;
 $gr=0;
 $z=0;
 $noti='';
-$stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid and thread_id is not null");
-         oci_execute($stmt);
-         $row=oci_fetch_array($stmt);
+$stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid and thread_id is not null");
+         pg_fetch_array($stmt);
+         $row=pg_fetch_array($stmt);
          $not=$row['COUNT(*)'];
-         $stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid and topic_id is not null");
-         oci_execute($stmt);
-         $row=oci_fetch_array($stmt);
+         $stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid and topic_id is not null");
+         pg_fetch_array($stmt);
+         $row=pg_fetch_array($stmt);
          $gr = $row['COUNT(*)'];
-    $stmt = oci_parse($conn,"select count(*) from notification where usersid = $user->userid and status=0");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from notification where usersid = $user->userid and status=0");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $z = $row['COUNT(*)'];
      
-        $stmt = oci_parse($conn,"select detail from notification where usersid=$user->userid order by time desc");
-     oci_execute($stmt);
-     while($row=oci_fetch_array($stmt)){
+        $stmt = pg_query($conn,"select detail from notification where usersid=$user->userid order by time desc");
+     pg_fetch_array($stmt);
+     while($row=pg_fetch_array($stmt)){
          $noti .= "<p>".$row['DETAIL']."</p><hr>";
      }
         
@@ -57,12 +57,12 @@ if(isset ($_POST['submit'])){
       $descError='Please fill out the description';
   }
   if(!$error){
-        $stmt = oci_parse($conn,"select topic_seq.nextval from dual");
-        oci_execute($stmt);
-        $row = oci_fetch_array($stmt);
+        $stmt = pg_query($conn,"select topic_seq.nextval from dual");
+        pg_fetch_array($stmt);
+        $row = pg_fetch_array($stmt);
         $id = $row['NEXTVAL'];
-        $stmt = oci_parse($conn,"insert into topic values($id,$user->userid,'$name','$description',sysdate)");
-        $row = oci_execute($stmt);
+        $stmt = pg_query($conn,"insert into topic values($id,$user->userid,'$name','$description',sysdate)");
+        $row = pg_fetch_array($stmt);
         if($row){
             $number = count($_POST['category']);
              for($i=0; $i<$number; $i++)  
@@ -70,14 +70,14 @@ if(isset ($_POST['submit'])){
             if(trim($_POST["category"][$i] != ''))  
             {
                 $category = $_POST['category'][$i];
-                $stmt =oci_parse($conn,"select * from topiccategory where category='$category' and topic_id=$id");
-                oci_execute($stmt);
-                if($row=oci_fetch_array($stmt)){
-                //    $q = oci_parse($conn,"update userslinks set link='$lin' where usersid=$user and type_id=$typeid");
-                //    oci_execute($q);
+                $stmt =pg_query($conn,"select * from topiccategory where category='$category' and topic_id=$id");
+                pg_fetch_array($stmt);
+                if($row=pg_fetch_array($stmt)){
+                //    $q = pg_query($conn,"update userslinks set link='$lin' where usersid=$user and type_id=$typeid");
+                //    pg_fetch_array($q);
                 }else{
-                    $stmt = oci_parse($conn,"insert into topiccategory values($id,'$category')"); //$catid
-                    $stat = oci_execute($stmt);
+                    $stmt = pg_query($conn,"insert into topiccategory values($id,'$category')"); //$catid
+                    $stat = pg_fetch_array($stmt);
                 }
             }
              }
@@ -87,31 +87,31 @@ if(isset ($_POST['submit'])){
             if(trim($_POST["tag"][$i] != ''))  
             {
                 $tag = $_POST['tag'][$i];
-                $stmt =oci_parse($conn,"select * from tags where tagname='$tag' and topic_id=$id");
-                oci_execute($stmt);
-                if($row=oci_fetch_array($stmt)){
-                //    $q = oci_parse($conn,"update userslinks set link='$lin' where usersid=$user and type_id=$typeid");
-                //    oci_execute($q);
+                $stmt =pg_query($conn,"select * from tags where tagname='$tag' and topic_id=$id");
+                pg_fetch_array($stmt);
+                if($row=pg_fetch_array($stmt)){
+                //    $q = pg_query($conn,"update userslinks set link='$lin' where usersid=$user and type_id=$typeid");
+                //    pg_fetch_array($q);
                 }else{
-                    $stmt = oci_parse($conn,"insert into tags values('$tag',$id)");
-                    $stat = oci_execute($stmt);
+                    $stmt = pg_query($conn,"insert into tags values('$tag',$id)");
+                    $stat = pg_fetch_array($stmt);
                 }
             }
             }
                     $desc =$username." Created the topic ".$name;
-                    $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
-                    oci_execute($activity);
+                    $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
+                    pg_fetch_array($activity);
                     $desc =$name." was Created!";
-                    $activity = oci_parse($conn,"insert into groupactivity values(gr_act.nextval,$user->userid,$id,sysdate,'$desc')");
-                    oci_execute($activity);        
-                    $stmt = oci_parse($conn,"insert into topicusers values($id,$user->userid,sysdate)");
-                    $result=oci_execute($stmt);
+                    $activity = pg_query($conn,"insert into groupactivity values(gr_act.nextval,$user->userid,$id,sysdate,'$desc')");
+                    pg_fetch_array($activity);        
+                    $stmt = pg_query($conn,"insert into topicusers values($id,$user->userid,sysdate)");
+                    $result=pg_fetch_array($stmt);
                     if($result){
                         $desc =$username." Added in Topic ".$name;
-                        $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
-                        oci_execute($activity);
-                        $activity = oci_parse($conn,"insert into groupactivity values(gr_act.nextval,$user->userid,$id,sysdate,'$desc')");
-                        oci_execute($activity);
+                        $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
+                        pg_fetch_array($activity);
+                        $activity = pg_query($conn,"insert into groupactivity values(gr_act.nextval,$user->userid,$id,sysdate,'$desc')");
+                        pg_fetch_array($activity);
                     }
                header("location: topic.php?id=$id");
         }

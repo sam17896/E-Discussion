@@ -23,9 +23,9 @@ if(!$topic1->isTopic($conn,$id)){
         $userid = $user->userid;
         if(!empty($_GET['message'])){
         $message = $_GET['message'];
-        $stmt = oci_parse($conn,"select msg_seq.nextval from dual");
-        oci_execute($stmt);
-        $row = oci_fetch_array($stmt);
+        $stmt = pg_query($conn,"select msg_seq.nextval from dual");
+        pg_fetch_array($stmt);
+        $row = pg_fetch_array($stmt);
         $msgid = $row['NEXTVAL'];    
         $user->addmessage($conn,$userid,$message,$msgid);
         $topic1->addmessage($conn,$id,$msgid);

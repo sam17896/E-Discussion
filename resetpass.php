@@ -14,8 +14,8 @@ if(isset($_GET['id']) && isset($_GET['code']))
  $id = $_GET['id'];
  $code = $_GET['code'];
  $stmt = $user->runQuery("SELECT username FROM users WHERE usersid=$id");
-    oci_execute($stmt);
-    $row = oci_fetch_array($stmt,OCI_BOTH);
+    pg_fetch_array($stmt);
+    $row = pg_fetch_array($stmt,//oci_BOTH);
     $username = $row['USERNAME'];
     $msg = "
         <label for='pass' class='labels'>New Password: </label>    
@@ -44,14 +44,14 @@ if(isset($_GET['id']) && isset($_GET['code']))
    {
        $pass = md5($pass);
     $stmt = $user->runQuery("UPDATE users SET pass='$pass' WHERE usersid='$id'");
-    oci_execute($stmt);
+    pg_fetch_array($stmt);
        $stmt=$user->runQuery("select username from users where usersid=$id");
-       oci_execute($stmt);
-       $row = oci_fetch_array($stmt);
+       pg_fetch_array($stmt);
+       $row = pg_fetch_array($stmt);
        $username=$row['USERNAME'];
        $desc =$username." Password was reset";
-    $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-    oci_execute($activity); 
+    $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+    pg_fetch_array($activity); 
     $msg = "<div class='alert alert-success'>
       <button class='close' data-dismiss='alert'>&times;</button>
       Password Changed.
@@ -59,8 +59,8 @@ if(isset($_GET['id']) && isset($_GET['code']))
       </div>";
     $user->login($row,$user->con);
     $desc =$username." Logged in";
-    $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-    oci_execute($activity);
+    $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+    pg_fetch_array($activity);
     $user->redirect('home.php');
    }
   } 

@@ -23,17 +23,17 @@ if(empty($_GET['id'])){
 else{
     $id = $_GET['id'];
     $_SESSION['topic']=$id;
-    $stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $not=$row['COUNT(*)'];
-    $stmt = oci_parse($conn,"select count(*) from notification where usersid = $user->userid and status=0");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from notification where usersid = $user->userid and status=0");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $z = $row['COUNT(*)'];
-      $stmt = oci_parse($conn,"select detail from notification where usersid=$user->userid order by time desc");
-     oci_execute($stmt);
-     while($row=oci_fetch_array($stmt)){
+      $stmt = pg_query($conn,"select detail from notification where usersid=$user->userid order by time desc");
+     pg_fetch_array($stmt);
+     while($row=pg_fetch_array($stmt)){
          $noti .= "<p>".$row['DETAIL']."</p><hr>";
      }
     if(!$topic1->isTopic($conn,$id)){

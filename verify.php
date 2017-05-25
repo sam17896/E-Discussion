@@ -22,8 +22,8 @@ if(isset($_GET['id']))
  $_SESSION['CODE'] = $code;
  $_SESSION['id'] = $id;    
  $stmt = $user->runQuery("SELECT status_2 FROM users WHERE usersid=$id");
- oci_execute($stmt);    
- if(($row = oci_fetch_array($stmt, OCI_BOTH))!=false){
+ pg_fetch_array($stmt);    
+ if(($row = pg_fetch_array($stmt, //oci_BOTH))!=false){
      if($row['STATUS_2']==0){
          $msg = "
              <div id='mesg' >
@@ -56,7 +56,7 @@ if(isset($_POST['code'])){
     if ($c==$_SESSION['CODE']){
         $id = $_SESSION['id'];
         $stm = $user->runQuery("update users set status_2 = 1 where usersid=$id");
-        $res = oci_execute($stm);
+        $res = pg_fetch_array($stm);
         if($res){
         $msg = "<div class='alert alert-error'>
        <strong>Success</strong>  Your Account is Now Activated!!<br>";
@@ -65,14 +65,14 @@ if(isset($_POST['code'])){
        <strong>Opps</strong>  Something went wrong please try again later";
         }
         $stm = $user->runQuery("select emailid,username from users where usersid=$id");
-        oci_execute($stm);
-        $row = oci_fetch_array($stm,OCI_BOTH);
+        pg_fetch_array($stm);
+        $row = pg_fetch_array($stm,//oci_BOTH);
         $mail = $row['EMAILID'];
         $uname = $row['USERNAME'];
         $u = new USER();
         $ref = md5($uname);
         $stm = $user->runQuery("update users set reference = '$ref' where usersid=$id");
-        oci_execute($stm);
+        pg_fetch_array($stm);
         $message = "Hello $uname<br>
         Your account was activated!<br>
         Invite your friends with this <a href='http://localhost:84/e-discussion/reference.php?ref=$ref'>link</a><br> 
@@ -83,8 +83,8 @@ if(isset($_POST['code'])){
         $desc =$uname." account verified";
         $db = new Database();
         $conn = $db->dbConnection();
-        $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-        oci_execute($activity); 
+        $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+        pg_fetch_array($activity); 
         
         $user->login($row,$conn);
     //    header("Location: home.php");

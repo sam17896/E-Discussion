@@ -19,24 +19,24 @@ $email='';
 $user = new USER();
 if(isset($_GET['ref'])){
 $ref= $_GET['ref'];
-$stm = oci_parse($conn,"select username,emailid from users where reference='$ref'");    
-oci_execute($stm);
-$rows = oci_fetch_array($stm,OCI_BOTH);
+$stm = pg_query($conn,"select username,emailid from users where reference='$ref'");    
+pg_fetch_array($stm);
+$rows = pg_fetch_array($stm,//oci_BOTH);
 $runame = $rows['USERNAME'];
 $remail = $rows['EMAILID'];
 $_SESSION['remail'] =$remail;
 $_SESSION['runame'] =$runame;    
 $stmt = $user->runQuery("select count(*) from users");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
+pg_fetch_array($stmt);
+$row = pg_fetch_array($stmt);
 $users = $row['COUNT(*)'];
 $stmt = $user->runQuery("select count(*) from topic");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
+pg_fetch_array($stmt);
+$row = pg_fetch_array($stmt);
 $topic = $row['COUNT(*)'];
 $stmt = $user->runQuery("select count(*) from activity");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
+pg_fetch_array($stmt);
+$row = pg_fetch_array($stmt);
 $activities = $row['COUNT(*)'];
 }
 if( isset($_SESSION['user'])!="" ){
@@ -71,9 +71,9 @@ if( isset($_SESSION['user'])!="" ){
    $error = true;
    $rnameError = "Username must have atleat 3 characters.";
   } else{
-    $oracle = oci_parse($conn, "select usersid from users where username='$username'");
-    oci_execute($oracle);
-      if(($row = oci_fetch_array($oracle, OCI_BOTH))!=false){
+    $oracle = pg_query($conn, "select usersid from users where username='$username'");
+    pg_fetch_array($oracle);
+      if(($row = pg_fetch_array($oracle, //oci_BOTH))!=false){
           $error=true;
        $rnameError = "Username not available";
    }
@@ -83,9 +83,9 @@ if( isset($_SESSION['user'])!="" ){
    $error = true;
    $remailError = "Please enter valid email address.";
   } else {
-   $oracle = oci_parse($conn, "select emailid from users where emailid='$email'");
-    oci_execute($oracle);
-   if(($row = oci_fetch_array($oracle, OCI_BOTH))!=false){
+   $oracle = pg_query($conn, "select emailid from users where emailid='$email'");
+    pg_fetch_array($oracle);
+   if(($row = pg_fetch_array($oracle, //oci_BOTH))!=false){
        $error=true;
        $emailError = "Email not available";
    }
@@ -102,13 +102,13 @@ if( isset($_SESSION['user'])!="" ){
   
   if( !$error ) {
     $res = $user->register($username,$email,$password,$conn);
-    $stmt = oci_parse($conn,"select usersid,username from users where username='$username'");
-    oci_execute($stmt);
-    $row = oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select usersid,username from users where username='$username'");
+    pg_fetch_array($stmt);
+    $row = pg_fetch_array($stmt);
     $id = $row['USERSID'];  
     $desc =$username." Registered on E-Discussion refered by ".$runame;
-    $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-    oci_execute($activity); 
+    $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+    pg_fetch_array($activity); 
    if ($res) {
     $errTyp = "success";
     $rerrMSG = "Successfully registered";
@@ -136,13 +136,13 @@ if( isset($_SESSION['user'])!="" ){
       
    $subject = "Thank You!!!";
     $user->send_mail($remail,$message,$subject); 
-       $stmt = oci_parse($conn,"select usersid,username from users where username='$username'");
-       oci_execute($stmt);
-       $row = oci_fetch_array($stmt);
+       $stmt = pg_query($conn,"select usersid,username from users where username='$username'");
+       pg_fetch_array($stmt);
+       $row = pg_fetch_array($stmt);
     $user->login($row,$conn);
     $desc =$username." logged in";
-    $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-    oci_execute($activity); 
+    $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+    pg_fetch_array($activity); 
    
        header("Location: editprofile.php?id=$id");
    } else {

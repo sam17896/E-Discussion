@@ -28,14 +28,14 @@ function updatetopic(){
          if($user->userid==$admin){
              $topic .="<a href='topic.php?id=$id'><button id='btn' name='add'>Add Users</button></a><br>";
          }else{
-            $stmt1 = oci_parse($conn,"select * from permission where topic_id=$id and usersid=$user->userid and status_2=0");
-            oci_execute($stmt1);
-            if($rows=oci_fetch_array($stmt1)){
+            $stmt1 = pg_query($conn,"select * from permission where topic_id=$id and usersid=$user->userid and status_2=0");
+            pg_fetch_array($stmt1);
+            if($rows=pg_fetch_array($stmt1)){
                 $topic .="<a href='request.php?id=$id&delete=1'><button id='btn' name='request' >Cancel</button><br></a>";
             }else{
-            $stmt2 = oci_parse($conn,"select * from topicusers where topic_id=$id and usersid=$user->userid");
-            oci_execute($stmt2);
-            if($res=oci_fetch_array($stmt2)){
+            $stmt2 = pg_query($conn,"select * from topicusers where topic_id=$id and usersid=$user->userid");
+            pg_fetch_array($stmt2);
+            if($res=pg_fetch_array($stmt2)){
                 $topic .="Added in the group";
             }
             else{

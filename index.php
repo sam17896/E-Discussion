@@ -19,18 +19,12 @@ $passError='';
 $errMSG ='';
 $rerrMSG='';
 $user = new USER();
-$stmt = $user->runQuery("select count(*) from users");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
-$users = $row['COUNT(*)'];
-$stmt = $user->runQuery("select count(*) from topic");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
-$topic = $row['COUNT(*)'];
-$stmt = $user->runQuery("select count(*) from activity");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
-$activities = $row['COUNT(*)'];
+$stmt =  pg_query($conn,"select * from users");
+$users = pg_num_rows($stmt);
+$stmt =pg_query($conn,"select * from topic");
+$topic = pg_num_rows($stmt);
+$stmt = pg_query($conn,"select * from activity");
+$activities = pg_num_rows($stmt);
  if ( isset($_POST['register']) ) {  
   // clean user inputs to prevent sql injections
   $username = trim($_POST['username']);
@@ -53,21 +47,22 @@ $activities = $row['COUNT(*)'];
    $error = true;
    $rnameError = "Username must have atleat 3 characters.";
   } else{
-    $oracle = oci_parse($conn, "select usersid from users where username='$username'");
-    oci_execute($oracle);
-      if(($row = oci_fetch_array($oracle, OCI_BOTH))!=false){
-          $error=true;
-       $rnameError = "Username not available";
-   }
+    $oracle = pg_query($conn, "select usersid from users where username='$username'");
+      if($oracle){
+          while(($row = pg_fetch_array($oracle))){
+              $error=true;
+           $rnameError = "Username not available";
+       }
+      }
   }
   //basic email validation
   if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
    $error = true;
    $remailError = "Please enter valid email address.";
   } else {
-   $oracle = oci_parse($conn, "select emailid from users where emailid='$email'");
-  oci_execute($oracle);
-   if(($row = oci_fetch_array($oracle, OCI_BOTH))!=false){
+   $oracle = pg_query($conn, "select emailid from users where emailid='$email'");
+  pg_fetch_array($oracle);
+   if(($row = pg_fetch_array($oracle))!=false){
        $error=true;
        $remailError = "Email not available";
   }
@@ -100,19 +95,19 @@ $activities = $row['COUNT(*)'];
       <br>Thanks.";
       
    $subject = "Confirm Registration";
-      $stmt = oci_parse($conn,"select usersid,username from users where username='$username'");
-       oci_execute($stmt);
-       $row = oci_fetch_array($stmt);
-       $id = $row['USERSID'];
+      $stmt = pg_query($conn,"select usersid,username from users where username='$username'");
+       $row = pg_fetch_array($stmt);
+       $id = $row['usersid'];
+       echo $row['username'];
        $desc = $username." registered on E-Discussion";
-       $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-       oci_execute($activity);
+       $activity = pg_query($conn,"insert into activity (id,usersid,times,detail) values(act_seq.nextval,$id,sysdate,'$desc')");
+       //pg_fetch_array($activity);
        $user->send_mail($email,$message,$subject); 
        $user->login($row,$conn);
        $desc =$username." Logged in";
-       $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-       oci_execute($activity);
-      header("Location: editprofile.php?id=$id");
+       $activity = pg_query($conn,"insert into activity (id,usersid,times,detail)(id,usersid,times,detail) values(act_seq.nextval,$id,sysdate,'$desc')");
+       //pg_fetch_array($activity);
+  //    header("Location: editprofile.php?id=$id");
    } else {
        $error = true;
     $errTyp = "danger";
@@ -148,13 +143,13 @@ if( isset($_POST['login']) ) {
   // if there's no error, continue to login
   if (!$error) {
    $password = md5($pass); // password hashing using md5
-    $sql = oci_parse ($conn,"select usersid,username,pass from users where username='$username' and pass = '$password'");
-    $res = oci_execute($sql);
-    if(($row = oci_fetch_array($sql, OCI_BOTH)) != false){
+    $sql = pg_query ($conn,"select usersid,username,pass from users where username='$username' and pass = '$password'");
+    //$res = pg_fetch_array($sql);
+    if(($row = pg_fetch_array($sql)) != false){
         $id = $row['USERSID'];
        $desc =$username." Logged in";
-       $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
-       $res=oci_execute($activity);
+       $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$id,sysdate,'$desc')");
+       //$res=pg_fetch_array($activity);
        $user->login($row,$conn);
         $repsonse["error"] = $error;
       header("Location: home.php");

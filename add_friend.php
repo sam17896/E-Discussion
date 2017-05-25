@@ -18,9 +18,9 @@ if(empty($_GET['id'])){
 }
 else{
     $id = $_GET['id'];
-    $stmt = oci_parse($conn,"select friend_seq.nextval from dual");
-    oci_execute($stmt);
-    $row = oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select friend_seq.nextval from dual");
+    pg_fetch_array($stmt);
+    $row = pg_fetch_array($stmt);
     $fid=$row['NEXTVAL'];
     $friendship->addfriendship($conn,$fid,$user->userid,$id);
     header("location: profile.php?id=$id");

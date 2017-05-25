@@ -25,21 +25,21 @@ if(!isset($_SESSION['user'])){
 else{
     $username=$_SESSION['user'];
     $user->makeuser($conn,$username);
-    $stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid and thread_id is not null");
-    oci_execute($stmt);
-    $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid and thread_id is not null");
+    pg_fetch_array($stmt);
+    $row=pg_fetch_array($stmt);
     $not=$row['COUNT(*)'];
-    $stmt = oci_parse($conn,"select count(*) from messagenot where usersid = $user->userid and topic_id is not null");
-    oci_execute($stmt);
-    $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from messagenot where usersid = $user->userid and topic_id is not null");
+    pg_fetch_array($stmt);
+    $row=pg_fetch_array($stmt);
     $gr = $row['COUNT(*)']; 
-    $stmt = oci_parse($conn,"select count(*) from notification where usersid = $user->userid and status=0");
-     oci_execute($stmt);
-     $row=oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select count(*) from notification where usersid = $user->userid and status=0");
+     pg_fetch_array($stmt);
+     $row=pg_fetch_array($stmt);
      $z = $row['COUNT(*)'];
-    $stmt = oci_parse($conn,"select detail from notification where usersid=$user->userid order by time desc");
-     oci_execute($stmt);
-     while($row=oci_fetch_array($stmt)){
+    $stmt = pg_query($conn,"select detail from notification where usersid=$user->userid order by time desc");
+     pg_fetch_array($stmt);
+     while($row=pg_fetch_array($stmt)){
          $noti .= "<p>".$row['DETAIL']."</p><hr>";
      }
 }
@@ -60,26 +60,26 @@ else{
 }
 else{
     $clas = 'col-md-12';
-    $stmt = oci_parse($conn,"select username from users where usersid=$id");
-    oci_execute($stmt);
-    $row = oci_fetch_array($stmt);
+    $stmt = pg_query($conn,"select username from users where usersid=$id");
+    pg_fetch_array($stmt);
+    $row = pg_fetch_array($stmt);
     $username = $row['USERNAME'];
-    $stmt = oci_parse($conn,"select id from friendship where senderid=$id and recieverid=$user->userid and status_2=0");
-    oci_execute($stmt);
-    if($row=oci_fetch_array($stmt)){
+    $stmt = pg_query($conn,"select id from friendship where senderid=$id and recieverid=$user->userid and status_2=0");
+    pg_fetch_array($stmt);
+    if($row=pg_fetch_array($stmt)){
         $fid=$row['ID'];
         $accept="<a style='margin-right:10px' href='accept_request.php?id=$fid&userid=$id'><button>Accept Request</button></a>";
         $reject="<a style='margin-right:10px' href='reject_request.php?id=$fid&userid=$id'><button>Reject Request</button></a>";
     }else{
-        $stmt = oci_parse($conn,"select id from friendship where senderid=$user->userid and recieverid=$id and status_2=0");
-        oci_execute($stmt);
-        if($row=oci_fetch_array($stmt)){
+        $stmt = pg_query($conn,"select id from friendship where senderid=$user->userid and recieverid=$id and status_2=0");
+        pg_fetch_array($stmt);
+        if($row=pg_fetch_array($stmt)){
             $fid =$row['ID'];
             $cr= "<a style='margin-right:10px' href='reject_request.php?id=$fid&userid=$id'><button>Cancel Request</button></a>";
         }else{
-            $stmt = oci_parse($conn,"select friendship_id from usersfriend where usersid=$user->userid and friendid=$id");
-            oci_execute($stmt);
-            if($row=oci_fetch_array($stmt)){
+            $stmt = pg_query($conn,"select friendship_id from usersfriend where usersid=$user->userid and friendid=$id");
+            pg_fetch_array($stmt);
+            if($row=pg_fetch_array($stmt)){
                 $fid=$row['FRIENDSHIP_ID'];
                 $rr="<a style='margin-right:10px' href='remove_friend.php?id=$fid&userid=$id'><button>Remove Friend</button></a>";
             }else{
@@ -104,72 +104,72 @@ $work='';
 $skill='';
 $interest='';
 $cover='';    
-$stmt = oci_parse($conn,"select userpic,usercover from users where usersid=$id");
-oci_execute($stmt);
-$row = oci_fetch_array($stmt);
+$stmt = pg_query($conn,"select userpic,usercover from users where usersid=$id");
+pg_fetch_array($stmt);
+$row = pg_fetch_array($stmt);
 $Dp=$row['USERPIC'];
 $cover = $row['USERCOVER'];    
-$stmt = oci_parse($conn,"select * from userdetails where usersid=$id");
-oci_execute($stmt);    
-$row = oci_fetch_array($stmt);
+$stmt = pg_query($conn,"select * from userdetails where usersid=$id");
+pg_fetch_array($stmt);    
+$row = pg_fetch_array($stmt);
 $Firstname = $row['FIRST_NAME'];
 $Lastname = $row['LAST_NAME'];
 $gender = $row['GENDER'];
 $country = $row['COUNTRY'];
 $dob = $row['DOB'];
-$stmt = oci_parse($conn,"select p.phonenumber,n.typename from phonenumber p, numbertype n where p.usersid=$id and p.type_id = n.typeid");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select p.phonenumber,n.typename from phonenumber p, numbertype n where p.usersid=$id and p.type_id = n.typeid");
+pg_fetch_array($stmt);
 $phone.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $phone .= " <tr>  
                 <td><h3>".$row['TYPENAME']."</h3></td>  
                 <td><h3>".$row['PHONENUMBER']."</h3></td>  
                </tr>";
 }
 $phone.="</table>";    
-$stmt = oci_parse($conn,"select l.name,u.link from links l, userslinks u where u.usersid=$id and l.id = u.links_id");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select l.name,u.link from links l, userslinks u where u.usersid=$id and l.id = u.links_id");
+pg_fetch_array($stmt);
 $link.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $link .= " <tr>  
                 <td><h3>".$row['NAME']."</h3></td>  
                 <td><a href=".$row['LINK']."><h3>".$row['LINK']."</h3></a></td>  
                </tr>";
 }
 $link.="</table>";    
-$stmt = oci_parse($conn,"select * from education where usersid=$id");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select * from education where usersid=$id");
+pg_fetch_array($stmt);
 $education.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $education .= " <tr>  
                 <td><h3>".$row['INSTITUTENAME']."</h3></td>  
                 <td><h3>".$row['EFROM']."-".$row['ETO']."</h3></td>  
                </tr>";
 }
 $education.="</table>";    
-$stmt = oci_parse($conn,"select * from work where usersid=$id");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select * from work where usersid=$id");
+pg_fetch_array($stmt);
 $work.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $work .= " <tr>  
                 <td><h3>".$row['COMPANYNAME']."</h3></td>  
                 <td><h3>".$row['WFROM']."-".$row['WTO']."</h3></td>  
                </tr>";
 }
 $work.="</table>";    
-$stmt = oci_parse($conn,"select * from usersinterest where usersid=$id");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select * from usersinterest where usersid=$id");
+pg_fetch_array($stmt);
 $interest.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $interest .= " <tr>  
                     <td><h3>".$row['INTREST']."</h3></td>  
                 </tr>";
 }
 $interest.="</table>";    
-$stmt = oci_parse($conn,"select * from usersskill where usersid=$id");
-oci_execute($stmt);
+$stmt = pg_query($conn,"select * from usersskill where usersid=$id");
+pg_fetch_array($stmt);
 $skill.="<table class=\"table table-bordered\">";    
-while($row=oci_fetch_array($stmt)){            
+while($row=pg_fetch_array($stmt)){            
     $skill .= " <tr>  
                     <td><h3>".$row['SKILLNAME']."</h3></td>  
                 </tr>";

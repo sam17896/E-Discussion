@@ -13,9 +13,9 @@ if($_POST)
 $sql_res=mysql_query("select  Username from users where  Username like '%$q%'");
 */
 $stmt = $user->runQuery("select usersid,Username,UserPic from users where  Username like '%$q%'");
-oci_execute($stmt);
+pg_fetch_array($stmt);
 
-while($row = oci_fetch_array($stmt))
+while($row = pg_fetch_array($stmt))
 {
 $username=$row['USERNAME'];
 $userimg=$row['USERPIC'];
@@ -31,9 +31,9 @@ $final_username = str_ireplace($q, $b_username, $username);
 <?php
 }
 $stmt = $user->runQuery("select t.id,t.name,u.Username,u.UserPic from users u, topic t where  t.name like '%$q%' and u.usersid = t.adminid");
-oci_execute($stmt);
+pg_fetch_array($stmt);
 
-while($row = oci_fetch_array($stmt))
+while($row = pg_fetch_array($stmt))
 {
 $username=$row['NAME'];
 $userimg=$row['USERPIC'];

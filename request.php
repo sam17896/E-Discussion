@@ -23,17 +23,17 @@ else if(empty($_GET['delete'])){
         echo 'The link you requested is not available';
     }
     else{
-        $stmt = oci_parse($conn,"insert into permission values($id,$user->userid,0)");
-        oci_execute($stmt);
+        $stmt = pg_query($conn,"insert into permission values($id,$user->userid,0)");
+        pg_fetch_array($stmt);
         $desc =$username." Requested to join the topic ".$topic1->name;
-        $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
-        oci_execute($activity);             
+        $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
+        pg_fetch_array($activity);             
         $desc =$username." Requested to join the topic ".$topic1->name;
-        $activity = oci_parse($conn,"insert into groupactivity values(act_seq.nextval,$user->userid,$id,sysdate,'$desc')");
-        oci_execute($activity);
+        $activity = pg_query($conn,"insert into groupactivity values(act_seq.nextval,$user->userid,$id,sysdate,'$desc')");
+        pg_fetch_array($activity);
         $desc = $username. " requested to join the Topic ".$topic1->name;
-//        $notification = oci_parse($conn,"insert into notification values(not_seq.nextval,$topic1->adminid,'$desc',0,sysdate)");
-//        oci_execute($notification);
+//        $notification = pg_query($conn,"insert into notification values(not_seq.nextval,$topic1->adminid,'$desc',0,sysdate)");
+//        pg_fetch_array($notification);
        header("location: topic.php?id=$id");
     }
     }else{
@@ -43,14 +43,14 @@ else if(empty($_GET['delete'])){
         echo 'The link you requested is not available';
     }
     else{
-        $stmt = oci_parse($conn,"delete from permission where topic_id=$id and usersid=$user->userid");
-        oci_execute($stmt);
+        $stmt = pg_query($conn,"delete from permission where topic_id=$id and usersid=$user->userid");
+        pg_fetch_array($stmt);
         $desc =$username." Cancelled the request to join the topic ".$topic1->name;
-        $activity = oci_parse($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
-        oci_execute($activity);             
+        $activity = pg_query($conn,"insert into activity values(act_seq.nextval,$user->userid,sysdate,'$desc')");
+        pg_fetch_array($activity);             
         $desc =$username." Cancelled the request to join the topic ".$topic1->name;
-        $activity = oci_parse($conn,"insert into groupactivity values(act_seq.nextval,$user->userid,$id,sysdate,'$desc')");
-        oci_execute($activity);             
+        $activity = pg_query($conn,"insert into groupactivity values(act_seq.nextval,$user->userid,$id,sysdate,'$desc')");
+        pg_fetch_array($activity);             
         header("location: topic.php?id=$id");
         
     }
