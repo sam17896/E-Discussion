@@ -12,6 +12,7 @@ class topic{
   $this->con = $db;
 }
     public function isTopic($conn,$id){
+        $id = pg_escape_string($id)
         $stmt= pg_query($conn,"select * from topic where id='$id'");
         //pg_fetch_array($stmt);
         if($row=pg_fetch_array($stmt)){
@@ -24,6 +25,7 @@ class topic{
 public function maketopic($conn,$id){
         $this->con = $conn;
         $this->id = $id;
+        $id = pg_escape_string($id)
         $stmt = pg_query($conn,"select * from topic where id='$id'");
         //pg_fetch_array($stmt);
         $row=pg_fetch_array($stmt);
@@ -32,6 +34,7 @@ public function maketopic($conn,$id){
         $this->description=$row['DESCRIPTION'];
     }
 public function getUsers($conn,$id){
+    $id = pg_escape_string($id)
     $stmt = pg_query($conn,"select t.usersid,u.username from topicusers t,users u where t.topic_id=$id and t.usersid=u.usersid");
     //pg_fetch_array($stmt);
     $result=array();
@@ -43,6 +46,7 @@ public function getUsers($conn,$id){
     echo json_encode(array('member'=>$result));
 }
     public function getAvailableUsers($conn,$id){
+        $id = pg_escape_string($id)
         $stmt = pg_query($conn,"select username,usersid from users where usersid in ((select friendid from usersfriend) minus (select usersid from topicusers where topic_id=$id))");
         //pg_fetch_array($stmt);
         $result=array();
